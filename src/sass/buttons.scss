@@ -1,0 +1,15 @@
+.btn-default.active {
+  color: $btn-active-text-color;
+  background-color: $btn-active-bg-color;
+  border-color: $btn-active-border-color;
+  &:hover {
+    color: $btn-active-text-color;
+    background-color: $btn-active-hover-bg-color;
+  }
+}
+
+.btn {
+  &:focus, &.focus, &:active:focus, &:active.focus, &.active:focus, &.active.focus {
+    outline: none;
+  }
+}

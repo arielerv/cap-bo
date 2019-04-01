@@ -1,0 +1,54 @@
+@import "bootstrap/app";
+@import "common";
+@import "footer";
+@import "buttons";
+@import "form";
+@import "header";
+@import "react-select";
+@import "records";
+@import "tables";
+
+html, body {
+  min-height: 100vh;
+  overflow-y: auto;
+  background-color: $bg-app;
+}
+
+main {
+  margin-top: 50px;
+  margin-bottom: 80px;
+}
+
+select.max {
+  max-width: 300px;
+  padding: 6px 2px;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+label {
+  display: inline;
+  font-weight: normal;
+}
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.no-padding {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.logo {
+  margin: 20px 12px;
+}

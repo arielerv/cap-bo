@@ -1,0 +1,8 @@
+// sass-lint:disable class-name-format
+.Select {
+  z-index: 0;
+  margin-right: 5px;
+  &.is-open {
+    z-index: 1;
+  }
+}

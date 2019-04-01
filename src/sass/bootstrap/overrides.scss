@@ -1,0 +1,55 @@
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+
+$btn-primary-color: #fff;
+$btn-primary-bg: #d44344;
+$btn-primary-border: #d44344;
+
+// Selected button
+$btn-active-text-color: #fff;
+$btn-active-bg-color: #224666;
+$btn-active-border-color: #fff;
+
+// Selected button (on hover)
+$btn-active-hover-bg-color: #0b2846;
+
+// redefined input-sm & all *-sm suffix
+$input-height-small: 22px;
+$padding-small-vertical: 1px;
+$padding-small-horizontal: 6px;
+$font-size-small: 14px;
+
+// nav
+$navbar-height: 27px;
+$navbar-default-bg: #122836;
+$navbar-padding-horizontal: 16px;
+
+// Shared nav styles
+$nav-link-padding: 3px 15px;
+$nav-link-hover-bg: #224666;
+
+// progress-bar
+$progress-bar-bg: #d5d5d5;
+
+// alert
+$alert-info-bg: #ddd;
+$alert-info-text: #545454;
+$alert-info-border: #c9c9c9;
+
+$alert-danger-bg: #fff;
+$alert-danger-text: #dc0068;
+$alert-danger-border: #dc0068;
+
+$alert-warning-bg: #fff;
+$alert-warning-text: #ff7224;
+$alert-warning-border: #ff7224;
+
+$alert-success-bg: #dff0d8;
+$alert-success-text: #3c763d;
+$alert-success-border: #3c763d;
+
+$state-danger-text: #dc0068;
+
+$dropdown-bg: #122836;
+$dropdown-link-color: #fff;
+$dropdown-link-hover-color: #fff;
+$dropdown-link-hover-bg: #122836;

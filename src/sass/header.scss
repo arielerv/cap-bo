@@ -1,0 +1,50 @@
+.navbar-inverse {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  .navbar-brand {
+    color: transparent;
+    &:hover {
+      color: transparent;
+    }
+  }
+  height: 50px;
+  background-color: $primary-color-dark;
+  border-color: transparent;
+  border-radius: 0;
+  .navbar-nav {
+    > li > a {
+      line-height: 42px;
+      color: #fff;
+    }
+    > .open {
+      > a,
+      > a:focus {
+        color: #fff;
+        background-color: transparent;
+      }
+    }
+  }
+  .navbar-toggle {
+    padding: 9px 10px;
+    margin: 5px;
+    border-color: transparent;
+    &:hover, &:focus {
+      background-color: transparent;
+    }
+  }
+  .navbar-collapse {
+    background-color: $primary-color-dark;
+    border-color: transparent;
+    .dropdown-menu {
+      margin-top: -1px;
+      > li > a {
+        &:hover, &:focus {
+          text-decoration: none;
+          background-color: #122836;
+        }
+      }
+    }
+  }
+}
