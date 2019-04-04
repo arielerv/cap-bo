@@ -47,9 +47,9 @@ class Users extends PureComponent {
     render() {
         const {users, loading, roles} = this.props;
         return (
-            <Grid fluid>
+            <Grid fluid className="grid-container">
                 <Row className="form-group">
-                    <Col sm={8}>
+                    <Col sm={10}>
                         <h2>
                             <FontAwesomeIcon icon={faUsers}/>
                             &nbsp;Usuarios
