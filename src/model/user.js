@@ -3,11 +3,16 @@ export default class User {
     name = '';
     surname = '';
     email = '';
-    documentId = '';
     updateAt = '';
     createdAt = '';
     username = '';
     typePassword = 0;
+    birthDate = '';
+    telephone = '';
+    mobilePhone = '';
+    address = '';
+    department = '';
+    state = '';
 
     constructor(obj) {
         Object.assign(this, obj);

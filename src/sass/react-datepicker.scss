@@ -1,0 +1,17 @@
+// sass-lint:disable-all
+$datepicker__font-size: 1.6rem;
+
+@import "~react-datepicker/src/stylesheets/datepicker";
+
+.react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range {
+  color: #fff;
+  background-color: $accent-color;
+  border-radius: 0.3rem;
+  &:hover {
+    background-color: $accent-color;
+  }
+}
+
+.react-datepicker__input-container {
+  width: 100%;
+}

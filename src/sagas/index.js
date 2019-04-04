@@ -22,6 +22,8 @@ import {
     saveUser,
     removeUser
 } from './user';
+import {fetchDepartments} from './state';
+import {REQUEST_DEPARTMENTS} from '../actions/states';
 
 export default function* root() {
     yield all([
@@ -33,6 +35,7 @@ export default function* root() {
         takeEvery(USER_REMOVE_REQUESTED, removeUser),
         takeEvery(USER_FIND_REQUESTED, findUser),
         takeEvery(USER_SAVE_REQUESTED, saveUser),
+        takeEvery(REQUEST_DEPARTMENTS, fetchDepartments),
         throttle(1000, USERS_FETCH_REQUESTED, fetchUsers)
     ]);
 }

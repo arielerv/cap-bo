@@ -7,7 +7,6 @@ import {faCog} from '@fortawesome/free-solid-svg-icons';
 import {resetStatusEnum} from '../../../model';
 
 const FeedbackStatus = ({resetStatus}) => {
-    console.log(resetStatus);
     switch (resetStatus) {
         case resetStatusEnum.VALIDATING_TOKEN:
             return (

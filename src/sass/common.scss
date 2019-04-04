@@ -27,9 +27,38 @@ h2, h3, h1 {
 .hr-title {
   margin: 10px 0 15px;
   border: 0;
-  border-bottom: 1px solid #839ba8 !important;
+  border-bottom: 1px solid $secondary-color !important;
 }
 
 .margin-top-h2 {
   margin-top: 20px;
+}
+
+.link {
+  color: #5D0000;
+}
+
+.color-white {
+  color: #fff;
+}
+
+.hr-margin {
+  margin: 10px 15px;
+}
+
+.side-nav-expanded {
+  color: $secondary-color;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  min-height: 50px;
+  padding-left: 20px;
+}
+
+.sidenav-text {
+  position: fixed;
+  margin-top: 5px;
+  padding-left: 25px;
 }

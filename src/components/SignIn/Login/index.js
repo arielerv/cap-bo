@@ -95,7 +95,7 @@ class SignIn extends Component {
                 <br/>
                 <Row className="text-center">
                     <LoginFacebook
-                        appId="1088597931155576"
+                        appId="1295427660607337"
                         autoLoad
                         fields="name,surname,email,picture"
                         callback={user => this.responseFacebook(user)}
