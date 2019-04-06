@@ -1,8 +1,8 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
-import {IconButton, IconLinkButton, LoadingButton} from '@indec/react-commons';
 import {faArrowLeft, faPaperPlane, faTimes} from '@fortawesome/free-solid-svg-icons';
 
+import {IconButton, IconLinkButton, LoadingButton} from '../../common';
 import {recoveryStatusEnum} from '../../../model';
 
 const NavigationButtons = ({recoveryStatus}) => {

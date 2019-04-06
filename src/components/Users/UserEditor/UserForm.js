@@ -4,8 +4,7 @@ import {Col, Form, Row} from 'react-bootstrap';
 
 import {
     NumberField, EmailField, TextField, SaveButton, Dropdown
-} from '@indec/react-commons';
-
+} from '../../common/fields';
 import {RoleTable} from '../../common';
 
 const UserForm = ({

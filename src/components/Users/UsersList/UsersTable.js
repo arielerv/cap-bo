@@ -5,7 +5,7 @@ import {
 } from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPencilAlt, faTrash, faWrench} from '@fortawesome/free-solid-svg-icons';
-import {IconLinkButton, IconButton} from '@indec/react-commons';
+import {IconLinkButton, IconButton} from '../../common';
 
 import QueryStringService from '../../../services/queryString';
 import DateUtilsService from '../../../services/dateUtils';

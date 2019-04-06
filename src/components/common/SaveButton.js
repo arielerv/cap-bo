@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSave} from '@fortawesome/free-solid-svg-icons';
 import {noop} from 'lodash';
 
-import {LoadingButton} from '@indec/react-commons';
+import LoadingButton from './LoadingButton';
 
 const SaveButton = ({
     disabled, onClick, saving, textButton, ...props
@@ -18,7 +18,8 @@ const SaveButton = ({
             {...{disabled, onClick, props}}
         >
             <FontAwesomeIcon icon={faSave}/>
-            &nbsp;{textButton}
+            &nbsp;
+            {textButton}
         </Button>
     )
 );

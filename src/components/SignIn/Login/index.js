@@ -1,127 +1,127 @@
-/* global window */
-import React, {Component} from 'react';
-import {
-    Grid, Row, Col, Button
-} from 'react-bootstrap';
-import LoginGoogle from 'react-google-login';
-import LoginFacebook from 'react-facebook-login/dist/facebook-login-render-props';
+/* eslint camelcase: ["error", {ignoreDestructuring: true, properties: "never"}] */
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {Grid, Row, Col} from 'react-bootstrap';
+import {faSpinner, faTimes} from '@fortawesome/free-solid-svg-icons';
 
-import TokenService from '../../../services/token';
-import LoginService from '../../../services/login';
+import {requestLoginSession, requestExternalLoginSession, setError} from '../../../actions/session';
 import LoginForm from './LoginForm';
+import {MessageIndicator} from '../../common';
+import ExternalLogin from './ExternalLogin';
 
-class SignIn extends Component {
+class SignIn extends PureComponent {
+    static propTypes = {
+        requestLoginSession: PropTypes.func.isRequired,
+        requestExternalLoginSession: PropTypes.func.isRequired,
+        setError: PropTypes.func.isRequired,
+        authenticated: PropTypes.bool,
+        loading: PropTypes.bool,
+        error: PropTypes.bool,
+        messageError: PropTypes.string,
+        history: PropTypes.shape({
+            push: PropTypes.func.isRequired
+        }).isRequired
+    };
+
+    static defaultProps = {
+        authenticated: null,
+        loading: false,
+        error: false,
+        messageError: null
+    };
+
     constructor(props) {
         super(props);
         this.state = {
             username: '',
-            password: '',
-            errorMessage: '',
-            working: false,
-            error: false
+            password: ''
         };
+    }
+
+    componentDidUpdate(prevProps) {
+        if (!prevProps.authenticated && this.props.authenticated) {
+            this.props.history.push('/');
+        }
+    }
+
+    failedExternalLogin() {
+        this.props.setError(true, 'Fallo login con enlace externo');
     }
 
     handleChange(e) {
         this.setState({[e.target.name]: e.target.value});
     }
 
-
-    failedLoginGoogle() {
-        this.setState(() => ({error: true, errorMessage: 'Ha ocurrido un error en el login.'}));
-    }
-
-    async handleSubmit(e) {
+    handleSubmit(e) {
         e.preventDefault();
         const {username, password} = this.state;
-        this.setState(() => ({working: true}));
-        const token = await (new LoginService(TokenService)).login(username, password);
-        this.setState(() => ({working: false}));
-        if (token) {
-            window.location = '/';
-            return;
-        }
-        this.setState(() => ({
-            error: true,
-            errorMessage: 'Usuario y/o contraseña inválidos',
-            password: '',
-            username: ''
-        }));
+        this.props.requestLoginSession(username, password);
     }
 
-    async responseFacebook(user) {
-        try {
-            const {email, surname, name} = user;
-            const token = await (new LoginService(TokenService)).externalLogin(email, name, surname);
-            if (token) {
-                window.location = '/';
-            }
-        } catch (err) {
-            this.setState(() => ({error: true, errorMessage: 'Ha ocurrido un error en el login.'}));
+    responseFacebook({
+        userID, first_name, last_name, email, picture
+    }) {
+        if (!email) {
+            this.props.setError(true, 'Para ingresar por facebook, debe informar un email válido');
+        } else {
+            this.props.requestExternalLoginSession({
+                id: userID,
+                name: first_name,
+                surname: last_name,
+                image: picture.url,
+                email
+            });
         }
     }
 
-    async responseGoogle(user) {
-        try {
-            const {email, familyName, givenName} = user;
-            const token = await (new LoginService(TokenService)).externalLogin(email, givenName, familyName);
-            if (token) {
-                window.location = '/';
-            }
-        } catch (err) {
-            this.setState(() => ({error: true, errorMessage: 'Ha ocurrido un error en el login.'}));
-        }
+    responseGoogle({
+        email, familyName, givenName, googleId, imageUrl
+    }) {
+        this.props.requestExternalLoginSession({
+            id: googleId,
+            name: givenName,
+            surname: familyName,
+            image: imageUrl,
+            email
+        });
     }
 
     render() {
-        const {
-            username, working, password, errorMessage, error
-        } = this.state;
+        const {username, password} = this.state;
+        const {error, loading, messageError} = this.props;
         return (
             <Grid>
-                <Row>
-                    <Col sm={4} smOffset={4}>
-                        <LoginForm
-                            onChange={e => this.handleChange(e)}
-                            onSubmit={e => this.handleSubmit(e)}
-                            {...{
-                                errorMessage, error, password, username, working
-                            }}
-                        />
-                    </Col>
-                </Row>
+                <LoginForm
+                    {...{password, username}}
+                    onChange={e => this.handleChange(e)}
+                    onSubmit={e => this.handleSubmit(e)}
+                    disabled={loading}
+                />
                 <br/>
+                {loading && <MessageIndicator icon={faSpinner} pulse/>}
+                {error && <MessageIndicator icon={faTimes} label={messageError}/>}
                 <br/>
-                <br/>
-                <Row className="text-center">
-                    <LoginFacebook
-                        appId="1295427660607337"
-                        autoLoad
-                        fields="name,surname,email,picture"
-                        callback={user => this.responseFacebook(user)}
-                        render={renderProps => (
-                            <Button onClick={renderProps.onClick}>Login with Facebook</Button>
-                        )}
-                    />
-                </Row>
-                <br/>
-                <Row className="text-center">
-                    <LoginGoogle
-                        clientId="476963071064-i0qg1ijlc54e5ahlf3oggc0su6mct8b8.apps.googleusercontent.com"
-                        buttonText="Login with google"
-                        onSuccess={user => this.responseGoogle(user.profileObj)}
-                        onFailure={() => this.failedLoginGoogle()}
-                        cookiePolicy="single_host_origin"
-                        render={renderProps => (
-                            <Button onClick={renderProps.onClick} disabled={renderProps.disabled}>
-                                Login with Google
-                            </Button>
-                        )}
-                    />
-                </Row>
+                <ExternalLogin
+                    resFacebook={user => this.responseFacebook(user)}
+                    failedLogin={() => this.failedExternalLogin()}
+                    resGoogle={user => this.responseGoogle(user.profileObj)}
+                />
             </Grid>
         );
     }
 }
 
-export default SignIn;
+export default connect(
+    state => ({
+        authenticated: state.session.authenticated,
+        error: state.session.error,
+        loading: state.session.loading,
+        messageError: state.session.message
+    }),
+    dispatch => ({
+        requestLoginSession: (username, password) => dispatch(requestLoginSession(username, password)),
+        requestExternalLoginSession: externalUser => dispatch(requestExternalLoginSession(externalUser)),
+        setError: (state, message) => dispatch(setError(state, message))
+    })
+)(SignIn);

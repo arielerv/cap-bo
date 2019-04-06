@@ -28,7 +28,8 @@ const RoleTable = ({roles, selectedRoles, onChange}) => (
                                 onChange={e => handleChange(e.target.value, selectedRoles, onChange)}
                                 checked={includes(selectedRoles, role._id)}
                             >
-                                &nbsp;{role.description}
+                                &nbsp;
+                                {role.description}
                             </Checkbox>
                         </td>
                     </tr>

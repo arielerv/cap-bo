@@ -1,0 +1,36 @@
+{
+  "clean": {
+    "dist": [
+      "coverage",
+      "dist"
+    ]
+  },
+  "copy": {
+    "dist": {
+      "src": [
+        "public/images/**",
+        "public/fonts/**",
+        "public/*.ico",
+        "index.js"
+      ],
+      "dest": "dist/"
+    }
+  },
+  "htmlmin": {
+    "src": [
+      "public/*.html"
+    ],
+    "dest": "dist/public",
+    "options": {
+      "collapseWhitespace": true
+    }
+  },
+  "eslint": {
+    "src": [
+      "gulp/**/*.js",
+      "public/**/*.js",
+      "src/**/*.js",
+      "./gulpfile.js"
+    ]
+  }
+}

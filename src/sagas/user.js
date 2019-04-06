@@ -4,7 +4,7 @@ import {
     receiveUsers,
     receiveUser,
     notifyUserSavedSuccessfully,
-    notifyRemovedUserSucceeded,
+    notifyRemovedUserSucceeded
 } from '../actions/users';
 import {handleError} from '../actions/common';
 

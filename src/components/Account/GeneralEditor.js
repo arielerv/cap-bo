@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import {Col, Form, Row} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faChevronCircleRight} from '@fortawesome/free-solid-svg-icons';
-import {TextField, DateField, Dropdown} from '@indec/react-commons';
 
+import {TextField, DateField, Dropdown} from '../common/fields';
 import {SaveButton} from '../common';
 
 const GeneralEditor = ({

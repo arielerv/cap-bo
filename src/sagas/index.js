@@ -4,10 +4,14 @@ import {ERROR_OCCURRED} from '../actions/common';
 import {
     SESSION_CLEAN_REQUESTED,
     SESSION_FETCH_CURRENT_USER_REQUESTED,
-    SESSION_FETCH_TOKEN_REQUESTED
+    SESSION_FETCH_TOKEN_REQUESTED,
+    SESSION_LOGIN_REQUESTED,
+    SESSION_EXTERNAL_LOGIN_REQUESTED
 } from '../actions/session';
 import handleError from './common';
-import {cleanSession, fetchSessionUser, fetchToken} from './session';
+import {
+    cleanSession, fetchSessionUser, fetchToken, fetchLogin, fetchExternalLogin
+} from './session';
 import {STATIC_DATA_REQUESTED} from '../actions/staticData';
 import {fetchStaticData} from './staticData';
 import {
@@ -17,13 +21,10 @@ import {
     USERS_FETCH_REQUESTED
 } from '../actions/users';
 import {
-    fetchUsers,
-    findUser,
-    saveUser,
-    removeUser
+    fetchUsers, findUser, saveUser, removeUser
 } from './user';
-import {fetchDepartments} from './state';
 import {REQUEST_DEPARTMENTS} from '../actions/states';
+import {fetchDepartments} from './state';
 
 export default function* root() {
     yield all([
@@ -36,6 +37,8 @@ export default function* root() {
         takeEvery(USER_FIND_REQUESTED, findUser),
         takeEvery(USER_SAVE_REQUESTED, saveUser),
         takeEvery(REQUEST_DEPARTMENTS, fetchDepartments),
-        throttle(1000, USERS_FETCH_REQUESTED, fetchUsers)
+        throttle(1000, USERS_FETCH_REQUESTED, fetchUsers),
+        takeEvery(SESSION_LOGIN_REQUESTED, fetchLogin),
+        takeEvery(SESSION_EXTERNAL_LOGIN_REQUESTED, fetchExternalLogin)
     ]);
 }
