@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {isEmpty, isNil} from 'lodash';
 
-import LoadingIndicator from './LoadingIndicator';
+import MessageIndicator from './MessageIndicator';
 import TableNullContent from './TableNullContent';
 
 const TableContainer = ({
     loading, entities, message, children
 }) => {
     if (loading) {
-        return <LoadingIndicator/>;
+        return <MessageIndicator/>;
     }
     if (isNil(entities)) {
         return null;

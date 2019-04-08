@@ -11,10 +11,6 @@ module.exports = {
         app: [
             'webpack-hot-middleware/client',
             './src/app'
-        ],
-        signIn: [
-            'webpack-hot-middleware/client',
-            './src/signIn'
         ]
     },
     resolve: {

@@ -1,13 +1,12 @@
-@import "bootstrap/app";
-@import "common";
-@import "footer";
-@import "buttons";
-@import "form";
-@import "header";
-@import "react-select";
-@import "tables";
-@import "side-nav";
-@import "react-datepicker";
+@import 'bootstrap/app';
+@import 'common';
+@import 'buttons';
+@import 'form';
+@import 'header';
+@import 'react-select';
+@import 'tables';
+@import 'side-nav';
+@import 'react-datepicker';
 
 html, body {
   min-height: 100vh;
@@ -29,6 +28,7 @@ a {
   color: #fff;
   text-decoration: none;
   cursor: pointer;
+
   &:hover,
   &:focus {
     text-decoration: underline;
@@ -68,4 +68,20 @@ label {
 
 .grid-container {
   margin: 30px
+}
+
+.col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
 }

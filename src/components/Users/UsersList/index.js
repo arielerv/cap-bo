@@ -5,9 +5,8 @@ import {Col, Grid, Row} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faUserPlus, faUsers} from '@fortawesome/free-solid-svg-icons';
 import {isEmpty} from 'lodash';
-import {IconLinkButton} from '@indec/react-commons';
 
-import {TableContainer} from '../../common';
+import {TableContainer, IconLinkButton} from '../../common';
 import {requestUsers, requestRemoveUser} from '../../../actions/users';
 import {confirmDialog} from '../../../util';
 import {User} from '../../../model';
@@ -82,8 +81,5 @@ export default connect(
         users: state.user.users,
         roles: state.staticData.roles
     }),
-    dispatch => ({
-        requestUsers: (term, state, page) => dispatch(requestUsers(term, state, page)),
-        requestRemoveUser: id => dispatch(requestRemoveUser(id))
-    })
+    {requestUsers, requestRemoveUser}
 )(Users);

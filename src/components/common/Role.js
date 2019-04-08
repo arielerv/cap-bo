@@ -10,12 +10,12 @@ const includeRole = (roles, sessionRoles) => (
 const disableChild = child => cloneElement(child, {disabled: true});
 
 const Role = ({
-    roles, rolesReadOnly, children, sessionRoles
+    roles, rolesReadOnly, children, sessionUser
 }) => {
-    if (!includeRole(roles, sessionRoles)) {
+    if (!includeRole(roles, sessionUser.roles)) {
         return false;
     }
-    if (!includeRole(rolesReadOnly, sessionRoles)) {
+    if (!includeRole(rolesReadOnly, sessionUser.roles)) {
         return children;
     }
     return Children.map(children, disableChild);
@@ -23,10 +23,7 @@ const Role = ({
 
 Role.propTypes = {
     roles: PropTypes.arrayOf(PropTypes.string).isRequired,
-    sessionRoles: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.string),
-        PropTypes.shape({})
-    ]),
+    sessionUser: PropTypes.shape({}),
     children: PropTypes.oneOfType([
         PropTypes.instanceOf(Component),
         PropTypes.func,
@@ -41,10 +38,10 @@ Role.propTypes = {
 
 Role.defaultProps = {
     rolesReadOnly: [],
-    sessionRoles: null,
+    sessionUser: {roles: []},
     children: undefined
 };
 
 export default connect(
-    state => ({sessionRoles: state.session.roles})
+    state => ({sessionUser: state.session.user})
 )(Role);

@@ -9,6 +9,7 @@
     "build": "gulp build"
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^5.8.1",
     "@trendmicro/react-sidenav": "^0.4.5",
     "compression": "^1.7.3",
     "connect": "^3.6.6",
@@ -29,8 +30,8 @@
     "@babel/preset-react": "^7.0.0",
     "@commitlint/cli": "^7.2.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.12",
-    "@fortawesome/free-solid-svg-icons": "^5.6.3",
-    "@fortawesome/react-fontawesome": "^0.1.3",
+    "@fortawesome/free-solid-svg-icons": "^5.8.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "@indec/react-commons": "^0.0.2",
     "arg.js": "^1.1.3",
     "babel-eslint": "^10.0.1",
@@ -78,7 +79,7 @@
     "redux-devtools": "^3.5.0",
     "redux-devtools-dock-monitor": "^1.1.3",
     "redux-devtools-log-monitor": "^1.4.0",
-    "redux-saga": "^0.16.2",
+    "redux-saga": "^1.0.2",
     "redux-slider-monitor": "^2.0.0-2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",

@@ -1,4 +1,3 @@
-/* global window */
 import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
@@ -15,9 +14,9 @@ import {roleEnum} from '../../model';
 import {Role} from '../common';
 import TokenService from '../../services/token';
 
-const signOut = () => {
+const signOut = history => {
     TokenService.clear();
-    window.location = '/signIn.html';
+    history.push('/signIn');
 };
 
 const Header = ({history, user}) => (
@@ -54,7 +53,7 @@ const Header = ({history, user}) => (
                         <FontAwesomeIcon icon={faInfo}/>
                         &nbsp;Información
                     </MenuItem>
-                    <MenuItem eventKey={3.3} onClick={() => signOut()}>
+                    <MenuItem eventKey={3.3} onClick={() => signOut(history)}>
                         <FontAwesomeIcon icon={faPowerOff}/>
                         &nbsp;Cerrar sessión
                     </MenuItem>

@@ -79,9 +79,5 @@ export default connect(
         saving: state.user.saving,
         roles: state.staticData.roles
     }),
-    dispatch => ({
-        requestUser: id => dispatch(requestUser(id)),
-        requestSaveUser: user => dispatch(requestSaveUser(user)),
-        setUser: user => dispatch(setUser(user))
-    })
+    {requestUser, requestSaveUser, setUser}
 )(UserEditor);

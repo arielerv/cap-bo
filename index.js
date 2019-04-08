@@ -12,7 +12,6 @@ const logger = winston.createLogger({
         })
     ]
 });
-
 app.use(require('morgan')(MORGAN_FORMAT));
 app.use(require('compression')());
 app.use(require('serve-static')(path.join(__dirname, SERVE_STATIC)));

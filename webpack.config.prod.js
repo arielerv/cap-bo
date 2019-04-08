@@ -8,8 +8,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 module.exports = {
     mode: NODE_ENV,
     entry: {
-        app: './src/app',
-        signIn: './src/signIn'
+        app: './src/app'
     },
     resolve: {
         modules: ['node_modules'],

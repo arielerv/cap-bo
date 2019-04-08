@@ -6,13 +6,14 @@ table > thead {
   > tr:nth-child(even) {
     background-color: #ebebeb;
   }
+
   > tr:nth-child(odd) {
     background-color: #f5f5f5;
   }
 }
 
 .table-vertical-middle td {
-  vertical-align: middle !important;
+  vertical-align: middle;
 }
 
 .td-people-tools {

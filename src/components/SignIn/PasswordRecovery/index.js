@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Grid} from 'react-bootstrap';
 import {faChevronCircleRight} from '@fortawesome/free-solid-svg-icons';
-import {PageHeader} from '@indec/react-commons';
 
+import {PageHeader} from '../../common';
 import {recoveryStatusEnum} from '../../../model';
 import SignInService from '../../../services/login';
 import FeedbackStatus from './FeedbackStatus';

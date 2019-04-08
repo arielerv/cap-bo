@@ -73,12 +73,14 @@ export default class LoginService {
         }
     }
 
-    async externalLogin(email, name, surname) {
+    async externalLogin(email, name, surname, googleId, imageUrl) {
         try {
             const response = await fetch(`${AUTH_ENDPOINT}externalLogin`, {
                 method: 'post',
                 credentials: 'same-origin',
-                body: JSON.stringify({email, name, surname}),
+                body: JSON.stringify({
+                    email, name, surname, googleId, imageUrl
+                }),
                 headers: {
                     'content-type': 'application/json'
                 }
